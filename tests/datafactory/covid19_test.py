@@ -1,6 +1,5 @@
 import unittest
 
-from generators import covid19 as c19
 
 class TestCovid19(unittest.TestCase):
     def test_list_int(self):
