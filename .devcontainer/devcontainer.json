@@ -9,6 +9,7 @@
     
     // Add the IDs of extensions you want installed when the container is created in the array below.
     "extensions": [
+        "mechatroner.rainbow-csv",
         "ms-python.python",
         "dbaeumer.vscode-eslint",
         "humao.rest-client",
