@@ -7,4 +7,4 @@ RUN apt-get upgrade -y
 RUN apt-get -y install vim mc git
 RUN apt-get -y install gnome-terminal --fix-missing
 
-RUN pip install pylint pandas matplotlib
+RUN pip install pylint pandas matplotlib rope
