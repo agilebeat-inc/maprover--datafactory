@@ -1,5 +1,5 @@
 import pandas
 
-class Fips:
+class Fips():
     def __init__(self):
         self.data_geojson = None

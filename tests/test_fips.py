@@ -1,9 +1,9 @@
 import unittest
-import datafactory.collectors as colls
+from datafactory import Fips
 
 class TestFips(unittest.TestCase):
     def test_Fips(self):
-        fips_lkp = colls.Fips()
+        fips_lkp = Fips()
         self.assertEqual(fips_lkp, None)
 
 if __name__ == '__main__':

@@ -1,1 +1,1 @@
-from datafactory.collectors import Fips
+from .fips import Fips
