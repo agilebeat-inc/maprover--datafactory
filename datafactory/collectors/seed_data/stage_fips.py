@@ -1,8 +1,8 @@
 import requests
 import os
 
-STATES_FN = "states.txt"
-STATES_COUNTIES_FN = 'st00_all_cou.txt'
+STATES_FN = "states.csv"
+STATES_COUNTIES_FN = 'st00_all_cou.csv'
 
 
 def downlaod_file(url):
@@ -52,16 +52,16 @@ def retrieve_and_persist_fips_countyper_state(state_fips, state_code, file_name)
     url = 'https://www2.census.gov/geo/docs/reference/codes/files/' + remote_fname
     content = downlaod_file(url)
     append_to_file(file_name, content)
-    append_to_file(file_name, b'\n')
+    if len(content) > 0 and content[len(content)-1] != '\n':
+        append_to_file(file_name, b'\n')
 
 
 def process_states(file_name):
     lines = load_states_master_file_as_lines(file_name)
     state_cnt = 0
     for line in lines:
-        state_cnt=+1
-        if state_cnt == 0:
-            print(line)
+        state_cnt+=1
+        if state_cnt == 1:
             continue 
         row_list = line.strip().split('|')
         state_fips = row_list[0]
@@ -69,8 +69,11 @@ def process_states(file_name):
         retrieve_and_persist_fips_countyper_state(state_fips, state_code, STATES_COUNTIES_FN)
 
 def clean_files():
-    os.remove(STATES_COUNTIES_FN)
-    os.remove(STATES_FN)
+    try:
+        os.remove(STATES_COUNTIES_FN)
+        os.remove(STATES_FN)
+    except Exception:
+        print("Swolled file cleanup exception")
 
 if __name__ == "__main__":
     clean_files()
