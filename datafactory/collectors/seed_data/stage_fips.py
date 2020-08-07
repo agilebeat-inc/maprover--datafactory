@@ -52,8 +52,11 @@ def retrieve_and_persist_fips_countyper_state(state_fips, state_code, file_name)
     url = 'https://www2.census.gov/geo/docs/reference/codes/files/' + remote_fname
     content = downlaod_file(url)
     append_to_file(file_name, content)
-    if len(content) > 0 and content[len(content)-1] != '\n':
+    content_str = content.decode()
+    last_char = content_str[len(content_str)-1]
+    if last_char != '\n':
         append_to_file(file_name, b'\n')
+
 
 
 def process_states(file_name):
@@ -64,9 +67,10 @@ def process_states(file_name):
         if state_cnt == 1:
             continue 
         row_list = line.strip().split('|')
-        state_fips = row_list[0]
-        state_code = row_list[1]
-        retrieve_and_persist_fips_countyper_state(state_fips, state_code, STATES_COUNTIES_FN)
+        if (len(row_list) > 1):
+            state_fips = row_list[0]
+            state_code = row_list[1]
+            retrieve_and_persist_fips_countyper_state(state_fips, state_code, STATES_COUNTIES_FN)
 
 def clean_files():
     try:
