@@ -3,7 +3,9 @@ import os
 
 STATES_FN = "states.csv"
 STATES_COUNTIES_FN = 'st00_all_cou.csv'
-
+#Source https://www.census.gov/library/reference/code-lists/ansi.html#par_statelist
+#Section County and County Equivalents
+STATES_COUNTIES_COLUMNS = b'STATE,STATEFP,COUNTYFP,COUNTYNAME,CLASSFP\n'
 
 def downlaod_file(url):
     print("Dwonloading: {}".format(url))
@@ -60,6 +62,7 @@ def retrieve_and_persist_fips_countyper_state(state_fips, state_code, file_name)
 
 
 def process_states(file_name):
+    persist_in_file(STATES_COUNTIES_FN, STATES_COUNTIES_COLUMNS)
     lines = load_states_master_file_as_lines(file_name)
     state_cnt = 0
     for line in lines:

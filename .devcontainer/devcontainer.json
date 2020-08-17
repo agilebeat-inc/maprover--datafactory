@@ -16,7 +16,7 @@
         "ms-vsliveshare.vsliveshare"
     ],
     "runArgs": [
-        "--name", "tensorflow-gpu-vsc",
+        "--name", "tensorflow-gpu-data-factory",
         //"--gpus", "all",
         "--rm"
     ],
