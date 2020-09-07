@@ -73,7 +73,7 @@ class CountiesGeom():
         high_x = bounds[2]
         high_y = bounds[3]
         is_outside = True
-        for i in range(n):
+        for _ in range(n):
             while is_outside:
                 x = random.uniform(low_x, high_x)
                 y = random.uniform(low_y, high_y)
