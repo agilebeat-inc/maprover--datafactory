@@ -1,1 +1,1 @@
-from generators import Covid19
+from .covid19_ts import Covid19TS
