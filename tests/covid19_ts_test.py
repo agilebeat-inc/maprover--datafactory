@@ -1,7 +1,7 @@
 import unittest
 import datafactory as df
 
-class TestGeoCounties(unittest.TestCase):
+class TestCovid19TS(unittest.TestCase):
     
     def test_constructor(self):
         tsf = df.Covid19TS()
