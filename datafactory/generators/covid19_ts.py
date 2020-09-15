@@ -19,12 +19,13 @@ class Covid19TS():
     def __generate_n_cases_within_given_fips_boundries(self, date, fips, n_cases):
         points = self.__counties_geom.get_n_random_points_within_fips(n_cases, fips)
         timestamps = self.__generate_n_timestamps_for_givendate(date, n_cases)
-        cases = [(timestamps[i], points[i], timestamps[i], fips, 1) for i in range(n_cases)]
-        print(cases)
+        cases = ([(timestamps[i], points[i], timestamps[i], fips, 1) for i in range(n_cases)])
+        return(cases)
         
     def generate_random_points_per_day_and_fips(self, fips, date, count):
         c19 = df.Covid19Collector()
         counter = 0
+        cases = []
         for r in iter(c19):
             if counter == 10:
                 break
@@ -32,6 +33,6 @@ class Covid19TS():
             date = r[1]
             fips = r[4]
             n_cases = r[5]
-            self.__generate_n_cases_within_given_fips_boundries(date, fips, n_cases)
-
+            cases.append(self.__generate_n_cases_within_given_fips_boundries(date, fips, n_cases))
+        return cases
 
