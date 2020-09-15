@@ -16,13 +16,13 @@
         "ms-vsliveshare.vsliveshare"
     ],
     "runArgs": [
-        "--name", "tensorflow-gpu-data-factory",
+        "--name", "influxdb-storage",
         //"--gpus", "all",
         "--rm"
     ],
     
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    "forwardPorts": [8888]
+    "forwardPorts": [8086]
     
     // Specifies a command that should be run after the container has been created.
     //"postCreateCommand": "yarn install",
